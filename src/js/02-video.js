@@ -1,47 +1,3 @@
-// import Player from '@vimeo/player';
-
-// const iframe = document.querySelector('iframe');
-// const player = new Player(iframe);
-
-// player.on('timeupdate', function (event) {
-//   player
-//     .getCurrentTime()
-//     .then(function (seconds) {
-//       // seconds = the current playback position
-//       //   console.log(seconds);
-//       return localStorage.setItem('videoplayer-current-time', seconds);
-//       //   return seconds;
-//     })
-//     .catch(function (error) {
-//       // an error occurred
-//       console.log('Помилка!!!!!');
-//     });
-// });
-
-// // console.log(localStorage.getItem('videoplayer-current-time'));
-// const videoPlayerCurrentTime = localStorage.getItem('videoplayer-current-time');
-// // ====================================перезавантаження сторінки===================================
-// player
-//   .setCurrentTime(videoPlayerCurrentTime)
-//   .then(function (seconds) {
-//     // seconds = the actual time that the player seeked to
-//   })
-//   .catch(function (error) {
-//     switch (error.name) {
-//       case 'RangeError':
-//         // the time was less than 0 or greater than the video’s duration
-//         break;
-
-//       default:
-//         // some other error occurred
-//         break;
-//     }
-//   });
-
-//   ==========================================================================================================
-//   ==========================================Throttle================================================================
-//   ==========================================================================================================
-
 import Player from '@vimeo/player';
 // import Throttle from 'lodash.throttle';
 
@@ -63,12 +19,11 @@ player.on(
       })
       .catch(function (error) {
         // an error occurred
-        console.log('Помилка!!!!!');
+        console.error('Set state error: ', error.message);
       });
   }, 1000)
 );
 
-// console.log(localStorage.getItem('videoplayer-current-time'));
 const videoPlayerCurrentTime = localStorage.getItem('videoplayer-current-time');
 // ====================================Перезавантаження сторінки===================================
 player
@@ -79,11 +34,14 @@ player
   .catch(function (error) {
     switch (error.name) {
       case 'RangeError':
-        // the time was less than 0 or greater than the video’s duration
+        console.error(
+          'Set state error: the time was less than 0 or greater than the video’s duration',
+          error.message
+        );
         break;
 
       default:
-        // some other error occurred
+        console.error('Set state error: ', error.message);
         break;
     }
   });
