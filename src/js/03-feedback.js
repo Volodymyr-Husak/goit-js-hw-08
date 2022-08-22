@@ -131,25 +131,26 @@ function onForm(event) {
 }
 
 window.onload = function (e) {
-  // console.log('веб-сторінку завантажено');
+  console.log('веб-сторінку завантажено');
   // debugger;
-  // try {
-  // Code that may throw a runtime error
-  if (localStorage.getItem('feedback-form-state')) {
-    inputElValueObj = localStorage.getItem('feedback-form-state');
-    // load('feedback-form-state');
-    // console.log(inputElValueObj);
-    feedbackFormState = JSON.parse(inputElValueObj);
+  try {
+    // Code that may throw a runtime error
+    if (localStorage.getItem('feedback-form-state')) {
+      inputElValueObj = localStorage.getItem('feedback-form-state');
+      // load('feedback-form-state');
+      // console.log(inputElValueObj);
+      feedbackFormState = JSON.parse(inputElValueObj);
+      // console.log(feedbackFormState);
+      inputEl.value = feedbackFormState.email;
+      textareaEl.value = feedbackFormState.message;
+    }
     // console.log(feedbackFormState);
-    inputEl.value = feedbackFormState.email;
+    else inputEl.value = feedbackFormState.email;
     textareaEl.value = feedbackFormState.message;
+  } catch (error) {
+    //   // Error handling
+    console.log(error.message);
   }
-  // console.log(feedbackFormState);
-  else inputEl.value = feedbackFormState.email;
-  textareaEl.value = feedbackFormState.message;
-  // } catch (error) {
-  //   // Error handling
-  // }
 };
 
 formEl.addEventListener('submit', onFormSubmit);
