@@ -136,7 +136,7 @@ window.onload = function (e) {
   try {
     // Code that may throw a runtime error
     if (localStorage.getItem('feedback-form-state')) {
-      inputElValueObj = localStorage.getItem('feedback-form-state');
+      const inputElValueObj = localStorage.getItem('feedback-form-state');
       // load('feedback-form-state');
       // console.log(inputElValueObj);
       feedbackFormState = JSON.parse(inputElValueObj);
