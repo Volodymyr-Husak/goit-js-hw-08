@@ -1,3 +1,6 @@
+// var _ = require('lodash.throttle');
+// var throttle = require('lodash.throttle');
+
 const formEl = document.querySelector('.feedback-form');
 
 const inputEl = document.querySelector('input');
@@ -57,4 +60,5 @@ function onFormSubmit(event) {
   }
   inputEl.value = '';
   textareaEl.value = '';
+  feedbackFormState = null;
 }
