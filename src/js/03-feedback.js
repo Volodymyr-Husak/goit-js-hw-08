@@ -1,3 +1,5 @@
+import throttle from 'lodash.throttle';
+
 const formEl = document.querySelector('.feedback-form');
 
 const inputEl = document.querySelector('input');
@@ -9,7 +11,7 @@ let feedbackFormState = {
   message: textareaEl.value,
 };
 
-formEl.addEventListener('input', _.throttle(onForm, 500));
+formEl.addEventListener('input', throttle(onForm, 500));
 
 function onForm(event) {
   try {
